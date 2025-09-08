@@ -1,0 +1,78 @@
+plugins {
+    alias(libs.plugins.android.application)
+    id "com.chaquo.python"
+}
+
+android {
+    namespace 'com.example.githubcrudapp'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.githubcrudapp"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            // On Apple silicon, you can omit x86_64.
+            abiFilters "arm64-v8a", "x86_64"
+        }
+        python {
+            version "3.13"
+
+            buildPython "C:/Users/Sayed Mohammed/AppData/Local/Programs/Python/Python313/python.exe"
+            // Specify Python packages to install
+            pip {
+                install "requests"
+                install "urllib3"
+                install "certifi"
+                install "idna"
+                install "charset-normalizer"
+            }
+        }
+        sourceSets {
+            main {
+                python.srcDir "src/main/python"
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    implementation "androidx.viewpager2:viewpager2:1.1.0"
+    implementation "androidx.fragment:fragment-ktx:1.8.3"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.6"
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+
+}
