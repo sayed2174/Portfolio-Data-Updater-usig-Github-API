@@ -51,7 +51,7 @@ Follow these steps to get the project up and running on your local machine.
 
 1.  **Clone the repository**:
     ```sh
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    git clone https://github.com/sayed2174/Portfolio-Data-Updater-usig-Github-API
     ```
 
 2.  **Open in Android Studio**:
